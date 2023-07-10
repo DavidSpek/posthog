@@ -393,7 +393,7 @@ snowflake-connector-python==3.0.4
     # via -r requirements.in
 social-auth-app-django==5.0.0
     # via -r requirements.in
-social-auth-core==4.3.0
+social-auth-core==4.4.2
     # via
     #   -r requirements.in
     #   social-auth-app-django
