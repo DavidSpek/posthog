@@ -149,6 +149,7 @@ AUTHENTICATION_BACKENDS: List[str] = [
     "axes.backends.AxesBackend",
     "social_core.backends.github.GithubOAuth2",
     "social_core.backends.gitlab.GitLabOAuth2",
+    "social_core.backends.open_id_connect.OpenIdConnectAuth",
     "django.contrib.auth.backends.ModelBackend",
 ]
 
@@ -175,6 +176,19 @@ SOCIAL_AUTH_GITLAB_SCOPE = ["read_user"]
 SOCIAL_AUTH_GITLAB_KEY = os.getenv("SOCIAL_AUTH_GITLAB_KEY")
 SOCIAL_AUTH_GITLAB_SECRET = os.getenv("SOCIAL_AUTH_GITLAB_SECRET")
 SOCIAL_AUTH_GITLAB_API_URL = os.getenv("SOCIAL_AUTH_GITLAB_API_URL", "https://gitlab.com")
+
+OIDC_SCOPE = os.getenv("SOCIAL_AUTH_OIDC_SCOPE")
+if OIDC_SCOPE:
+    OIDC_SCOPE = OIDC_SCOPE.split(" ")
+else:
+    OIDC_SCOPE = ["openid", "email", "profile"]
+
+SOCIAL_AUTH_OIDC_OIDC_ENDPOINT = os.getenv("SOCIAL_AUTH_OIDC_OIDC_ENDPOINT")
+SOCIAL_AUTH_OIDC_KEY = os.getenv("SOCIAL_AUTH_OIDC_KEY")
+SOCIAL_AUTH_OIDC_SECRET = os.getenv("SOCIAL_AUTH_OIDC_SECRET")
+SOCIAL_AUTH_OIDC_USERNAME_KEY = os.getenv("SOCIAL_AUTH_OIDC_USERNAME_KEY", "email")
+SOCIAL_AUTH_OIDC_SCOPE = OIDC_SCOPE
+SOCIAL_AUTH_OIDC_IGNORE_DEFAULT_SCOPE = True
 
 # 2FA
 TWO_FACTOR_REMEMBER_COOKIE_AGE = 60 * 60 * 24 * 30

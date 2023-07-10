@@ -892,6 +892,7 @@ def get_instance_available_sso_providers() -> Dict[str, bool]:
     output: Dict[str, bool] = {
         "github": bool(settings.SOCIAL_AUTH_GITHUB_KEY and settings.SOCIAL_AUTH_GITHUB_SECRET),
         "gitlab": bool(settings.SOCIAL_AUTH_GITLAB_KEY and settings.SOCIAL_AUTH_GITLAB_SECRET),
+        "oidc": bool(settings.SOCIAL_AUTH_OIDC_OIDC_ENDPOINT and settings.SOCIAL_AUTH_OIDC_KEY and settings.SOCIAL_AUTH_OIDC_SECRET),
         "google-oauth2": False,
     }
 

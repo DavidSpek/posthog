@@ -10,5 +10,7 @@ export const SocialLoginIcon = (provider: SSOProvider): JSX.Element | undefined 
         return <GitlabIcon />
     } else if (provider === 'saml') {
         return <IconKey />
+    } else if (provider === 'oidc') {
+        return <IconKey />
     }
 }
